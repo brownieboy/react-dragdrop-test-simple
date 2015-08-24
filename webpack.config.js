@@ -7,16 +7,41 @@ var TARGET = process.env.npm_lifecycle_event;
 var ROOT_PATH = path.resolve(__dirname);
 
 var common = {
-    entry: {
-        app: [path.resolve(ROOT_PATH, 'app/app.jsx')]
-    },
     output: {
         path: path.resolve(ROOT_PATH, 'build'),
         filename: 'bundle.js'
     }
 };
 
+
+if (TARGET === 'build') {
+    module.exports = merge(common, {
+        entry: {
+            app: path.resolve(ROOT_PATH, 'app/app.jsx'),
+            vendor: ["react", "jquery", "jquery-ui"]
+        },
+        plugins: [
+            new webpack.optimize.CommonsChunkPlugin("vendor", "vendor.bundle.js")
+        ],
+        devtool: 'eval-source-map',
+        module: {
+            // Note: don't include the same loader in multiple places, e.g putting babel under "common" and here.
+            // Webpack will error out if you try this.
+            loaders: [{
+                test: /\.jsx?$/,
+                loaders: ['babel'],
+                include: path.resolve(ROOT_PATH, 'app')
+            }]
+        }
+
+    });
+}
+
+
 var devServerCommon = {
+    entry: {
+        app: [path.resolve(ROOT_PATH, 'app/app.jsx')]
+    },
     devServer: {
         colors: true,
         noInfo: false,
@@ -49,5 +74,3 @@ if (TARGET === 'start' || !TARGET) {
 
     });
 }
-
-

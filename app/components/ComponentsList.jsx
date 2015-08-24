@@ -1,5 +1,8 @@
+// import $ from 'jquery';
+// import $ from 'jquery-ui';
 import React from 'react';
 import ListComponent from './ListComponent.jsx';
+debugger;
 
 export default class ComponentsList extends React.Component {
   render() {
@@ -20,6 +23,10 @@ export default class ComponentsList extends React.Component {
         </ul>
       </section>
     );
+  }
+
+  componentDidMount() {
+    console.log("ComponentsList.componentDidMount()")
   }
 }
 
