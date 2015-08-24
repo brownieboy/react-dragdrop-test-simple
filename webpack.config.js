@@ -8,7 +8,7 @@ var ROOT_PATH = path.resolve(__dirname);
 
 var common = {
     entry: {
-        app: [path.resolve(ROOT_PATH, 'client/app.jsx')]
+        app: [path.resolve(ROOT_PATH, 'app/app.jsx')]
     },
     output: {
         path: path.resolve(ROOT_PATH, 'build'),
@@ -43,7 +43,7 @@ if (TARGET === 'start' || !TARGET) {
             loaders: [{
                 test: /\.jsx?$/,
                 loaders: ['react-hot', 'babel'],
-                include: path.resolve(ROOT_PATH, 'client')
+                include: path.resolve(ROOT_PATH, 'app')
             }]
         }
 

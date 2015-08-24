@@ -1,0 +1,7 @@
+.index-list li {
+	display: block;
+	border: 1px solid red;
+	padding: 30px;
+	list-style-type: none;
+	width: 100px;
+}
