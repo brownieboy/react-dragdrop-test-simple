@@ -17,9 +17,9 @@ export default class ComponentsList extends React.Component {
     return (
       <section>
         <h2>{this.props.title}</h2>
-        <ul ref="indexList" className="index-list">
+        <ul ref="indexList" id={this.props.id} className="index-list">
           {this.props.items.map((item, index) => {
-              return(<ListComponent key={index} item={item} />); 
+              return(<ListComponent key={index} item={item} />);
           })}
         </ul>
       </section>
@@ -33,8 +33,12 @@ export default class ComponentsList extends React.Component {
   }
 
   makeSortable(thisDOMNode) {
+
+    // var connectWith = this.props.connectWithComponent ? : false;
+    var connectWith = false;
     $(thisDOMNode).find("ul").sortable({
       helper: "clone",
+      connectWith: connectWith,
       start: function(event, ui) {
         console.log("drag started");
       },
