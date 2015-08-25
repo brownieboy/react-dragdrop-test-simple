@@ -5,23 +5,47 @@ var merge = require('webpack-merge');
 
 var TARGET = process.env.npm_lifecycle_event;
 var ROOT_PATH = path.resolve(__dirname);
+var BUILDJSPATH = "js/vendor.js";
 
 var common = {
     output: {
         path: path.resolve(ROOT_PATH, 'build'),
-        filename: 'bundle.js'
+        filename: 'js/bundle.js'
     }
 };
 
 
 if (TARGET === 'build') {
     module.exports = merge(common, {
+        noParse: ["react", "jquery", "jquery-ui"],
+        entry: {
+            app: path.resolve(ROOT_PATH, 'app/app.jsx')
+        },
+        plugins: [
+            new webpack.optimize.CommonsChunkPlugin("vendor", BUILDJSPATH)
+        ],
+        devtool: 'eval-source-map',
+        module: {
+            // Note: don't include the same loader in multiple places, e.g putting babel under "common" and here.
+            // Webpack will error out if you try this.
+            loaders: [{
+                test: /\.jsx?$/,
+                loaders: ['babel'],
+                include: path.resolve(ROOT_PATH, 'app')
+            }]
+        }
+
+    });
+}
+
+if (TARGET === 'buildall') {
+    module.exports = merge(common, {
         entry: {
             app: path.resolve(ROOT_PATH, 'app/app.jsx'),
             vendor: ["react", "jquery", "jquery-ui"]
         },
         plugins: [
-            new webpack.optimize.CommonsChunkPlugin("vendor", "vendor.bundle.js")
+            new webpack.optimize.CommonsChunkPlugin("vendor", BUILDJSPATH)
         ],
         devtool: 'eval-source-map',
         module: {
