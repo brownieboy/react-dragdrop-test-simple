@@ -1,8 +1,11 @@
-// import $ from 'jquery';
-// import $ from 'jquery-ui';
+import $ from 'jquery';
+//import $ from 'jquery-ui/sortable';
 import React from 'react';
 import ListComponent from './ListComponent.jsx';
 debugger;
+
+// window.jQuery = $;
+// window.$ = $;
 
 export default class ComponentsList extends React.Component {
   render() {
@@ -22,11 +25,25 @@ export default class ComponentsList extends React.Component {
           })}
         </ul>
       </section>
-    );
+    )
   }
 
   componentDidMount() {
-    console.log("ComponentsList.componentDidMount()")
+    console.log("ComponentsList.componentDidMount()");
+    var thisDOMNode = React.findDOMNode(this);
+    console.log("ComponentsList.componentDidMount(), thisDOMNode value = " + thisDOMNode);
+  }
+
+  makeSortable(thisDOMNode) {
+    $(thisDOMNode).sortable({
+      helper: "clone",
+      start: function(event, ui) {
+        console.log("drag started");
+      },
+      stop: function(event, ui) {
+        console.log("drag stopped");
+      }
+    });
   }
 }
 
