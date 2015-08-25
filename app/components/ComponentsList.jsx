@@ -29,7 +29,6 @@ export default class ComponentsList extends React.Component {
   componentDidMount() {
     console.log("ComponentsList.componentDidMount()");
     var thisDOMNode = React.findDOMNode(this);
-    console.log("ComponentsList.componentDidMount(), thisDOMNode value = " + thisDOMNode);
     this.makeSortable(thisDOMNode);    
   }
 
