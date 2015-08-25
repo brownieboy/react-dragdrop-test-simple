@@ -7,6 +7,10 @@ import ListComponent from './ListComponent.jsx';
 // window.$ = $;
 
 export default class ComponentsList extends React.Component {
+  // constructor(props) {
+  //   super(props);
+  //   console.log("1. this.props.connectWithComponentId = " + this.props.connectWithComponentId);
+  // }
   render() {
     if (this.props.items.length === 0) {
       return (
@@ -17,7 +21,7 @@ export default class ComponentsList extends React.Component {
     return (
       <section>
         <h2>{this.props.title}</h2>
-        <ul ref="indexList" id={this.props.id} className="index-list">
+        <ul ref="indexList" id={this.props.id} className="connected-list index-list">
           {this.props.items.map((item, index) => {
               return(<ListComponent key={index} item={item} />);
           })}
@@ -33,17 +37,23 @@ export default class ComponentsList extends React.Component {
   }
 
   makeSortable(thisDOMNode) {
-    var connectWith = this.props.connectWithComponent ? this.props.connectWithComponent.getId() : false;
-    $(thisDOMNode).find("ul").sortable({
-      helper: "clone",
-      connectWith: connectWith,
-      start: function(event, ui) {
-        console.log("drag started");
-      },
-      stop: function(event, ui) {
-        console.log("drag stopped");
-      }
-    });
+    // console.log("id = " + this.props.id + ", connectWithComponentId = " + this.props.connectWithComponentId);
+    // var connectWith = this.props.connectWithComponentId ? this.props.connectWithComponentId : false;
+    // console.log("connectWith = " + connectWith);
+    if(this.props.connectWithComponentId) {
+      var connectionString = "#" + this.props.id + ", #" + this.props.connectWithComponentId;
+      console.log("connectionString = " + connectionString);
+      $(connectionString).sortable({
+        helper: "clone",
+        connectWith: ".connected-list",
+        start: function(event, ui) {
+          console.log("drag started");
+        },
+        stop: function(event, ui) {
+          console.log("drag stopped");
+        }
+      });
+    }
   }
 
   getId() {

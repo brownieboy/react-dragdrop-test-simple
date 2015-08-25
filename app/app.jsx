@@ -9,9 +9,10 @@ import IndexComponent from './components/ComponentsList.jsx';
 // 	<IndexComponent items={[4,5,6]} title="Target list" /></div>, document.body);
 
 
-var sourceListComponent = <IndexComponent items={[1,2,3]} title="Source list" />;
+var sourceListComponent = <IndexComponent items={[1,2,3]}
+	title="Source list" id="sourceList" />;
 var targetListComponent = <IndexComponent items={[4,5,6]} title="Target list"
- connectWithComponent={sourceListComponent} />;
+	id="targetList" connectWithComponentId="sourceList"/>;
 
 React.render(<div>{sourceListComponent}{targetListComponent}</div>, document.body);
 
