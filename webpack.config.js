@@ -17,9 +17,9 @@ var common = {
 
 if (TARGET === 'build') {
     module.exports = merge(common, {
-        noParse: ["react", "jquery", "jquery-ui"],
         entry: {
-            app: path.resolve(ROOT_PATH, 'app/app.jsx')
+            app: path.resolve(ROOT_PATH, 'app/app.jsx'),
+            vendor: ["react"]
         },
         plugins: [
             new webpack.optimize.CommonsChunkPlugin("vendor", BUILDJSPATH)
