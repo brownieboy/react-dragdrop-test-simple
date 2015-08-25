@@ -16,7 +16,7 @@ export default class ComponentsList extends React.Component {
 
     return (
       <section>
-        <h2>react-webpack-boilerplate</h2>
+        <h2>{this.props.title}</h2>
         <ul ref="indexList" className="index-list">
           {this.props.items.map((item, index) => {
               return(<ListComponent key={index} item={item} />); 
