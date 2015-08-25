@@ -1,9 +1,9 @@
-// import $ from 'jquery';
-import $ from 'jquery-ui/sortable';
+import $ from 'jquery';
+// import $ from 'jquery-ui/sortable';
+import 'jquery-ui';
+
 import React from 'react';
 import ListComponent from './ListComponent.jsx';
-debugger;
-
 // window.jQuery = $;
 // window.$ = $;
 
@@ -36,8 +36,9 @@ export default class ComponentsList extends React.Component {
   }
 
   makeSortable(thisDOMNode) {
-    $(thisDOMNode).sortable({
-    // $(".index-list").sortable({
+    // $(thisDOMNode).sortable({
+    debugger;
+   $(".index-list").sortable({
       helper: "clone",
       start: function(event, ui) {
         console.log("drag started");
