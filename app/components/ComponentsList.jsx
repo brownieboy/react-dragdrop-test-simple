@@ -33,9 +33,7 @@ export default class ComponentsList extends React.Component {
   }
 
   makeSortable(thisDOMNode) {
-
-    // var connectWith = this.props.connectWithComponent ? : false;
-    var connectWith = false;
+    var connectWith = this.props.connectWithComponent ? this.props.connectWithComponent.getId() : false;
     $(thisDOMNode).find("ul").sortable({
       helper: "clone",
       connectWith: connectWith,
@@ -46,6 +44,10 @@ export default class ComponentsList extends React.Component {
         console.log("drag stopped");
       }
     });
+  }
+
+  getId() {
+    return this.props.id;
   }
 }
 
