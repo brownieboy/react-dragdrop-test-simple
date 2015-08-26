@@ -1,20 +1,34 @@
 'use strict';
 
 import React from 'react';
-import { Router, Route, Link } from 'react-router';
+// import { Router, Route, Link } from 'react-router';
 import IndexComponent from './components/ComponentsList.jsx';
-
-
-// React.render(<div><IndexComponent items={[1,2,3]} title="Source list" />
-// 	<IndexComponent items={[4,5,6]} title="Target list" /></div>, document.body);
-
 
 var sourceListComponent = <IndexComponent items={[1,2,3]}
 	title="Source list" id="sourceList" />;
 var targetListComponent = <IndexComponent items={[4,5,6]} title="Target list"
 	id="targetList" connectWithComponentId="sourceList"/>;
 
-React.render(<div>{sourceListComponent}{targetListComponent}</div>, document.body);
+
+export default class MainApp extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+	render() {
+		return ( <div>
+			<IndexComponent items={this.props.sourceItems}
+				title="Source list" id="sourceList" />
+			<IndexComponent items={this.props.targetItems} title="Target list"
+				id="targetList" connectWithComponentId="sourceList"/></div> );
+	}
+}
+
+MainApp.defaultProps = {sourceItems: [1,2,3], targetItems: [4,5,6]};
+
+
+
+React.render(<MainApp />, document.body);
 
 
 

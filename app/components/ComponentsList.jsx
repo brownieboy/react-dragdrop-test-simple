@@ -37,20 +37,21 @@ export default class ComponentsList extends React.Component {
   }
 
   makeSortable(thisDOMNode) {
-    // console.log("id = " + this.props.id + ", connectWithComponentId = " + this.props.connectWithComponentId);
-    // var connectWith = this.props.connectWithComponentId ? this.props.connectWithComponentId : false;
-    // console.log("connectWith = " + connectWith);
     if(this.props.connectWithComponentId) {
       var connectionString = "#" + this.props.id + ", #" + this.props.connectWithComponentId;
-      console.log("connectionString = " + connectionString);
       $(connectionString).sortable({
         helper: "clone",
         connectWith: ".connected-list",
         start: function(event, ui) {
-          console.log("drag started");
+
         },
         stop: function(event, ui) {
-          console.log("drag stopped");
+          debugger;
+          var tempObj = ui.item[0];
+          var tempText = ui.item[0].textContent;
+          var targetListId = ui.item.parent().attr("id");
+          console.log("tempText = " + tempText);
+          console.log("targetListId = " + targetListId);
         }
       });
     }
