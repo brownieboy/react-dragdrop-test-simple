@@ -39,12 +39,13 @@ export default class ComponentsList extends React.Component {
   makeSortable(thisDOMNode) {
     if(this.props.connectWithComponentId) {
       var that = this;
-      var connectionString = "#" + this.props.id + ", #" + this.props.connectWithComponentId;
+      // var connectionString = "#" + this.props.id + ", #" + this.props.connectWithComponentId;
+      var connectionString = "#" + this.props.id;
       $(connectionString).sortable({
         helper: "clone",
         connectWith: "." + that.props.connectWithClass,
         stop: function(event, ui) {
-          that.props.onItemDragStop(event, ui);
+          that.props.onItemDragStop(this, event, ui);
         }
       }).bind(this);
     }

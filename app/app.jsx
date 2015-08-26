@@ -1,4 +1,6 @@
 'use strict';
+import $ from 'jquery';
+import 'jquery-ui/sortable';
 
 import React from 'react';
 // import { Router, Route, Link } from 'react-router';
@@ -20,25 +22,26 @@ export default class MainApp extends React.Component {
 		return ( <div>
 			<IndexComponent items={this.props.sourceItems}
 				title="Source list" id="sourceList"
-				connectWithClass="connected-list" sectionClassName="listSection"
+				sectionClassName="listSection"
+				connectWithComponentId="sourceList"
 				onItemDragStop={this.onSourceListItemDragStop} />
 			<IndexComponent items={this.props.targetItems} title="Target list"
 				connectWithClass="connected-list" sectionClassName="listSection"
-				id="targetList" onItemDragStop={this.onTargetListItemDragStop}
-				connectWithComponentId="sourceList"/></div> );
+				id="targetList" /></div> );
 	}
 
-	onSourceListItemDragStop(event, ui) {
+	onSourceListItemDragStop(sortableContextObject,event, ui) {
       var newText = ui.item[0].textContent;
       var targetListId = ui.item.parent().attr("id");
-      console.log("tempText = " + tempText);
+      console.log("tempText = " + newText);
       console.log("targetListId = " + targetListId);
+      $(sortableContextObject).sortable("cancel");
 	}
 
-	onTargetListItemDragStop(event, ui) {
+	onTargetListItemDragStop(sortableContextObject, event, ui) {
       var newText = ui.item[0].textContent;
       var targetListId = ui.item.parent().attr("id");
-      console.log("tempText = " + tempText);
+      console.log("tempText = " + newText);
       console.log("targetListId = " + targetListId);
 	}
 }
