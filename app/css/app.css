@@ -9,3 +9,9 @@
 .listSection{
 	display: inline-block;
 }
+
+
+#sourceList .ui-sortable-placeholder {
+	/* Stops the sourceList from displaying an empty placeholder when you drag something over it. */
+	display: none;
+}
