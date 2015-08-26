@@ -43,15 +43,10 @@ export default class ComponentsList extends React.Component {
         helper: "clone",
         connectWith: ".connected-list",
         start: function(event, ui) {
-
+            // Do nothing?
         },
         stop: function(event, ui) {
-          debugger;
-          var tempObj = ui.item[0];
-          var tempText = ui.item[0].textContent;
-          var targetListId = ui.item.parent().attr("id");
-          console.log("tempText = " + tempText);
-          console.log("targetListId = " + targetListId);
+          this.props.onItemDragStop(event, ui);
         }
       });
     }
