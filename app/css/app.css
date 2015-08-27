@@ -12,6 +12,11 @@
 	padding: 20px 20px 5px 20px;
 }
 
+.index-list.ui-sortable > li {
+    cursor: move;
+}
+
 .index-list > li {
 	margin-bottom: 15px;
 }
+
