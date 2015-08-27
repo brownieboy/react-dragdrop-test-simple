@@ -3,25 +3,23 @@ import $ from 'jquery';
 import 'jquery-ui/sortable';
 
 import React from 'react';
-import IndexComponent from './components/ComponentsList.jsx';
+import ListOfComponents from './components/ListOfComponents.jsx';
 
-export default class MainApp extends React.Component {
+class MainApp extends React.Component {
     constructor(props) {
         super(props);
     }
-
 	render() {
 		return (
 			<div>
-				<IndexComponent items={this.props.sourceItems}
+				<ListOfComponents items={this.props.sourceItems}
 					title="Source list" id="sourceList"
 					sectionClassName="listSection"
 					sortable={true}
 					onItemDragStop={this.onSourceListItemDragStop} />
 			 </div>
-			 )
+		)
 	}
-
 	onSourceListItemDragStop(sortableContextObject, event, ui) {
       var newText = ui.item[0].textContent;
       var targetListId = ui.item.parent().attr("id");
