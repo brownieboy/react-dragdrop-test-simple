@@ -1,7 +1,10 @@
 import React from 'react';
 
 export default class ListComponent extends React.Component {
+	constructor(props) {
+    	super(props);
+  	}
 	render() {
-      return (<li key={this.props.key}>item {this.props.item}</li>);
+      return (<li>item {this.props.title}</li>);
 	}
 }

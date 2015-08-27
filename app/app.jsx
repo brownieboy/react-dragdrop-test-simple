@@ -1,6 +1,7 @@
 'use strict';
 import $ from 'jquery';
 import 'jquery-ui/sortable';
+import shortid from "shortid";
 
 import React from 'react';
 import ListOfComponents from './components/ListOfComponents.jsx';
@@ -11,9 +12,12 @@ class MainApp extends React.Component {
     	// In ES6 class syntax, React no longer automagically binds your
     	// methods to the component object, so DIY (if they're likely to
     	// used as callbacks only?)
-		  this.state = {sourceItems: props.sourceItems};
+		var tempItems = props.sourceItems.map((item, index) => {
+			return {title: item, key: shortid.generate()};
+		});
+		this.state = {sourceItems: tempItems};
     	this.onSourceListItemDragStart = this.onSourceListItemDragStart.bind(this);
-      this.onSourceListItemDragStop = this.onSourceListItemDragStop.bind(this);
+        this.onSourceListItemDragStop = this.onSourceListItemDragStop.bind(this);
     }
 	render() {
 		return (
