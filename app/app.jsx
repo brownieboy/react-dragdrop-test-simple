@@ -7,7 +7,13 @@ import ListOfComponents from './components/ListOfComponents.jsx';
 
 class MainApp extends React.Component {
     constructor(props) {
-        super(props);
+    	super(props);
+    	// In ES6 class syntax, React no longer automagically binds your
+    	// methods to the component object, so DIY (if they're likely to
+    	// used as callbacks only?)
+		this.state = {items: props.items};
+    	this.onSourceListItemDragStart = this.onSourceListItemDragStart.bind(this);  
+      this.onSourceListItemDragStop = this.onSourceListItemDragStop.bind(this);
     }
 	render() {
 		return (
@@ -16,16 +22,29 @@ class MainApp extends React.Component {
 					title="Source list" id="sourceList"
 					sectionClassName="listSection"
 					sortable={true}
-					onItemDragStop={this.onSourceListItemDragStop} />
+					onItemDragStop={this.onSourceListItemDragStop}
+					onItemDragStart={this.onSourceListItemDragStart} />
 			 </div>
 		)
 	}
-	onSourceListItemDragStop(sortableContextObject, event, ui) {
-      var newText = ui.item[0].textContent;
-      var targetListId = ui.item.parent().attr("id");
-      console.log("tempText = " + newText);
-      console.log("targetListId = " + targetListId);
+	onSourceListItemDragStart (sortableContextObject, event, ui) {
+      this.dragStartIndex = ui.item.index();
 	}
+	onSourceListItemDragStop (sortableContextObject, event, ui) {
+		var oldIndex = this.dragStartIndex;
+		var newIndex = ui.item.index();
+		this.reorderFromIndexes(oldIndex, newIndex);
+
+	}
+   reorderFromIndexes: function(prevIndex, newIndex) {
+     // var newItems = ;
+
+
+     // productsPickedDataClone.splice(newIndex, 0, productsPickedDataClone.splice(prevIndex, 1)[0]);
+
+
+     // this.setState({productsPickedData: productsPickedDataClone});
+ }
 }
 
 MainApp.defaultProps = {sourceItems: [1,2,3]};

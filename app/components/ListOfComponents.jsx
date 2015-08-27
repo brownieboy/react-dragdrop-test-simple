@@ -42,6 +42,9 @@ export default class ComponentsList extends React.Component {
       var connectionString = "#" + this.props.id;
       $(connectionString).sortable({
         helper: "clone",
+        start: function(event, ui) {
+          that.props.onItemDragStart(this, event, ui);
+        },
         stop: function(event, ui) {
           that.props.onItemDragStop(this, event, ui);
         }
