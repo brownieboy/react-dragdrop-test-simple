@@ -6,12 +6,12 @@
 	width: 100px;
 }
 
-.listSection{
+.index-list {
 	display: inline-block;
+	border: 1px blue solid;
+	padding: 20px 20px 5px 20px;
 }
 
-
-#sourceList .ui-sortable-placeholder {
-	/* Stops the sourceList from displaying an empty placeholder when you drag something over it. */
-	display: none;
+.index-list > li {
+	margin-bottom: 15px;
 }
