@@ -24,7 +24,7 @@ if (TARGET === 'build') {
         plugins: [
             new webpack.optimize.CommonsChunkPlugin("vendor", BUILDJSPATH)
         ],
-        devtool: 'eval-source-map',
+        devtool: 'source-map',
         module: {
             // Note: don't include the same loader in multiple places, e.g putting babel under "common" and here.
             // Webpack will error out if you try this.
@@ -38,16 +38,21 @@ if (TARGET === 'build') {
     });
 }
 
-if (TARGET === 'buildall') {
+if (TARGET === 'buildmin') {
     module.exports = merge(common, {
         entry: {
             app: path.resolve(ROOT_PATH, 'app/app.jsx'),
             vendor: ["react", "react-router", "jquery", "jquery-ui"]
         },
         plugins: [
-            new webpack.optimize.CommonsChunkPlugin("vendor", BUILDJSPATH)
+            new webpack.optimize.CommonsChunkPlugin("vendor", BUILDJSPATH),
+            new webpack.optimize.UglifyJsPlugin({
+                compress: {
+                    warnings: false
+                }
+            })
         ],
-        devtool: 'eval-source-map',
+        devtool: 'source-map',
         module: {
             // Note: don't include the same loader in multiple places, e.g putting babel under "common" and here.
             // Webpack will error out if you try this.
@@ -60,7 +65,6 @@ if (TARGET === 'buildall') {
 
     });
 }
-
 
 var devServerCommon = {
     entry: {

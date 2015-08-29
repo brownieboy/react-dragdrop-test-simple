@@ -44,6 +44,7 @@ class MainApp extends React.Component {
     	var newStateSourceItems = this.state.sourceItems.slice();
     	newStateSourceItems.splice(newIndex, 0, newStateSourceItems.splice(oldIndex, 1) [0]);
     	this.setState({sourceItems: newStateSourceItems});
+    	console.log("order is " + JSON.stringify(this.state.sourceItems));
  	}
 }
 

@@ -3,14 +3,8 @@ import 'jquery-ui/sortable';
 
 import React from 'react';
 import ListComponent from './ListComponent.jsx';
-// window.jQuery = $;
-// window.$ = $;
 
 export default class ComponentsList extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   console.log("1. this.props.connectWithComponentId = " + this.props.connectWithComponentId);
-  // }
   render() {
     if (this.props.items.length === 0) {
       return (
@@ -31,7 +25,6 @@ export default class ComponentsList extends React.Component {
   }
 
   componentDidMount() {
-    console.log("ComponentsList.componentDidMount()");
     var thisDOMNode = React.findDOMNode(this);
     this.makeSortable(thisDOMNode);    
   }
