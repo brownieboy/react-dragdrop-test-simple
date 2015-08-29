@@ -38,19 +38,13 @@ class MainApp extends React.Component {
 		var oldIndex = this.dragStartIndex;
 		var newIndex = ui.item.index();
 		$(sortableContextObject).sortable("cancel");
-
 		this.reorderFromIndices(oldIndex, newIndex);
-
 	}
-  reorderFromIndices(prevIndex, newIndex) {
-     // var newItems = ;
-
-
-     // productsPickedDataClone.splice(newIndex, 0, productsPickedDataClone.splice(prevIndex, 1)[0]);
-
-
-     // this.setState({productsPickedData: productsPickedDataClone});
- }
+	reorderFromIndices(oldIndex, newIndex) {
+    	var newStateSourceItems = this.state.sourceItems.slice();
+    	newStateSourceItems.splice(newIndex, 0, newStateSourceItems.splice(oldIndex, 1) [0]);
+    	this.setState({sourceItems: newStateSourceItems});
+ 	}
 }
 
 MainApp.defaultProps = {sourceItems: [1,2,3]};

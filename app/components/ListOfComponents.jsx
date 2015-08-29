@@ -22,7 +22,7 @@ export default class ComponentsList extends React.Component {
       <section className={this.props.sectionClassName}>
         <h2>{this.props.title}</h2>
         <ul id={this.props.id} className="connected-list index-list">
-          {this.props.items.map((item, index) => {
+          {this.props.items.map(function(item, index) {
               return(<ListComponent key={item.key} title={item.title} />);
           })}
         </ul>
