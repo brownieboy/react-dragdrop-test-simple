@@ -33,6 +33,47 @@ The major advantage is that it actually works!  And works everywhere, including 
 The disadvantages are that ReactJS plus jQuery plus jQuery-ui is a pretty heavy set of dependencies, even when minified.  You can, however, cut jQuery-ui down to just the essentials needed for its .sortable() functionality.
 
 
+##Program Structure
+**app/app.jsx** is the entry point for the application.  It contains the class `MainApp`, which runs the show.  It renders the `ListOfComponents` component, and handles the callbacks for the stopping and starting of the drag/drop.  Those callbacks take care of reordering the state data, issuing a setState() call when they do.
+
+**app/components/ListOfComponents.jsx*** sets up our list, which is an array of `ListComponent`, from the file **ListComponent** (<li> tags, basically).
+
+`makeSortable()` is the key method in **ListOfComponents**.  It's called by that component's `componentDidMount()` method.  It takes care of initiating the jQuery-ui sorting of our list elements via the latter's `.sortable()` call.
+
+```javascript
+  makeSortable(thisDOMNode) {
+    if(this.props.sortable) {
+      var that = this;
+      var connectionString = "#" + this.props.id;
+      $(connectionString).sortable({
+        helper: "clone",
+        start: function(event, ui) {
+          that.props.onItemDragStart(this, event, ui);
+        },
+        stop: function(event, ui) {
+          that.props.onItemDragStop(this, event, ui);
+        }
+      });
+    }
+  }
+```
+
+The `start` method is called when the user starts dragging an item in our list around.  This passes some events and properties back up to `MainApp` via a callback to the `onSourceListItemDragStart` method of `MainApp`.  That method simply stores the index of the current line (i.e. the one that user has started dragging around) to component variable, for later use.
+
+The 'stop' method is called (you'll never believe it!!!) when the user *stops* dragging that item around.  Again, it passes events and properties to `MainApp` via a callback to its `onSourceListItemDragStop` method.  Let's look at that method then:
+```
+	onSourceListItemDragStop (sortableContextObject, event, ui) {
+		var oldIndex = this.dragStartIndex;
+		var newIndex = ui.item.index();
+		$(sortableContextObject).sortable("cancel");
+		this.reorderFromIndices(oldIndex, newIndex);
+	}
+```
+
+This method picks up the dragged item's old index (from the component variable where we stored it earlier) and its new index from the `ui` property.  It then - and this is an important bit - cancels the jQuery-ui sort, so the UI goes back to how it was before the user started dragging, so ReactJS won't get all upset with you! It passes those to indexes to the `reorderFromIndices` method, which resorts the data and issues a `setState()` call to re-render the list in the UI.
+
+
+
 ##Libraries and Build Tools
 The sample list app requires ReactJS, jQuery and jQuery-UI as run time dependencies.  It's written in the new ES6, or ES2015 as it's now called, syntax using the module pattern.  So it requires Webpack and Babel as build tools.
 
