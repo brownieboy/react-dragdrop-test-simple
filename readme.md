@@ -61,7 +61,7 @@ The disadvantages are that ReactJS plus jQuery plus jQuery-ui is a pretty heavy 
 The `start` method is called when the user starts dragging an item in our list around.  This passes some events and properties back up to `MainApp` via a callback to the `onSourceListItemDragStart` method of `MainApp`.  That method simply stores the index of the current line (i.e. the one that user has started dragging around) to component variable, for later use.
 
 The 'stop' method is called (you'll never believe it!!!) when the user *stops* dragging that item around.  Again, it passes events and properties to `MainApp` via a callback to its `onSourceListItemDragStop` method.  Let's look at that method then:
-```
+```javascript
 	onSourceListItemDragStop (sortableContextObject, event, ui) {
 		var oldIndex = this.dragStartIndex;
 		var newIndex = ui.item.index();
