@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Test of React drag and drop",
   "main": "index.js",
-  "repository": "",
+  "repository": "https://github.com/brownieboy/react-dragdrop-test-simple",
   "dependencies": {
     "jquery": "^2.1.4",
     "jquery-ui": "^1.10.5",

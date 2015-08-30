@@ -17,7 +17,7 @@ class MainApp extends React.Component {
 		});
 		this.state = {sourceItems: tempItems};
     	this.onSourceListItemDragStart = this.onSourceListItemDragStart.bind(this);
-        this.onSourceListItemDragStop = this.onSourceListItemDragStop.bind(this);
+      this.onSourceListItemDragStop = this.onSourceListItemDragStop.bind(this);
     }
 	render() {
 		return (
