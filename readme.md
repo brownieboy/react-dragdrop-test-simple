@@ -70,7 +70,7 @@ The 'stop' method is called (you'll never believe it!!!) when the user *stops* d
 	}
 ```
 
-This method picks up the dragged item's old index (from the component variable where we stored it earlier) and its new index from the `ui` property.  It then - and this is an important bit - cancels the jQuery-ui sort, so the UI goes back to how it was before the user started dragging, so ReactJS won't get all upset with you! It passes those to indexes to the `reorderFromIndices` method, which resorts the data and issues a `setState()` call to re-render the list in the UI.
+This method picks up the dragged item's old index (from the component variable where we stored it earlier) and its new index from the `ui` property.  It then - and this is an important bit - cancels the jQuery-ui sort, so the UI goes back to how it was before the user started dragging, and ReactJS won't get all upset with you! It passes those two indexes to the `reorderFromIndices` method, which resorts the data and issues a `setState()` call to re-render the list in the UI.
 
 
 
