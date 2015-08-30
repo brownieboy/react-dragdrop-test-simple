@@ -1,8 +1,8 @@
 'use strict';
 import $ from 'jquery';
 import 'jquery-ui/sortable';
+import 'jquery-ui-touch-punch';
 import shortid from "shortid";
-
 import React from 'react';
 import ListOfComponents from './components/ListOfComponents.jsx';
 

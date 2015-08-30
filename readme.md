@@ -28,7 +28,7 @@ The trick to getting them to work together was to not let jQuery-ui modify the U
 
 
 ##Advantages & Disadvantages
-The major advantage is that it actually works!  And works everywhere, including mobile.
+The major advantage is that it actually works!  And works everywhere, including mobile (courtesy of the jquery-ui-touch-punch plugin).
 
 The disadvantages are that ReactJS plus jQuery plus jQuery-ui is a pretty heavy set of dependencies, even when minified.  You can, however, cut jQuery-ui down to just the essentials needed for its .sortable() functionality.
 

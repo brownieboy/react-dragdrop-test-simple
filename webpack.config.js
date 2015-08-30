@@ -22,7 +22,14 @@ if (TARGET === 'build') {
             vendor: ["react", "react-router", "jquery", "jquery-ui"]
         },
         plugins: [
-            new webpack.optimize.CommonsChunkPlugin("vendor", BUILDJSPATH)
+            new webpack.optimize.CommonsChunkPlugin("vendor", BUILDJSPATH),
+            new webpack.ProvidePlugin({
+                $: "jquery",
+                jQuery: "jquery",
+                "window.jQuery": "jquery",
+                "root.jQuery": "jquery"
+            })
+
         ],
         devtool: 'source-map',
         module: {
@@ -50,6 +57,12 @@ if (TARGET === 'buildmin') {
                 compress: {
                     warnings: false
                 }
+            }),
+            new webpack.ProvidePlugin({
+                $: "jquery",
+                jQuery: "jquery",
+                "window.jQuery": "jquery",
+                "root.jQuery": "jquery"
             })
         ],
         devtool: 'source-map',
