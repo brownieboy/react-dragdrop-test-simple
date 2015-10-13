@@ -87,8 +87,16 @@ In a terminal, cd to the folder that you just cloned the repository into and run
 ```
 npm install
 ```
+to install the dependencies.
 
-You can build the app with either:
+To run the demo, it's then:
+```
+npm run start
+```
+This starts up webpack-dev-server.  When this is running, your test URL is http://localhost:8080 
+
+
+If you want to do a static build of the app, you can use either:
 ```
 npm run build
 ```
@@ -97,13 +105,7 @@ or if you're on Windows
 npm run buildwin
 ```
 
-NB: either of the latter two commands will minify and uglify the resulting JavaScript libraries, which reduced to about a third of their unminified sizes.  However, build time is significantly higher!
-
-Open the build/index.html file via a local server.  SublimeServer is good if you're running SubmlimeText.  Otherwise you can run:
-```
-npm run start
-```
-to start up webpack-dev-server.  When this is running, your test URL is http://localhost:8080 
+NB: either of the latter two commands will minify and uglify the resulting JavaScript libraries, which reduced to about a third of their unminified sizes.  However, build time is significantly higher!  Open the build/index.html file via a local server.  SublimeServer is good if you're running SubmlimeText.
 
 
 ## Demo
