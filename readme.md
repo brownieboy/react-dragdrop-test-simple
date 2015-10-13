@@ -78,7 +78,7 @@ This method picks up the dragged item's old index (from the component variable w
 The sample list app requires ReactJS, jQuery and jQuery-UI as run time dependencies.  It's written in the new ES6, or ES2015 as it's now called, syntax using the module pattern.  So it requires Webpack and Babel as build tools.
 
 ##To Install
-Clone the github repository https://github.com/brownieboy/react-dragdrop-test-simple:
+Clone this github repository:
 ```
 git clone https://github.com/brownieboy/react-dragdrop-test-simple.git
 ```
