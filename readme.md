@@ -78,7 +78,12 @@ This method picks up the dragged item's old index (from the component variable w
 The sample list app requires ReactJS, jQuery and jQuery-UI as run time dependencies.  It's written in the new ES6, or ES2015 as it's now called, syntax using the module pattern.  So it requires Webpack and Babel as build tools.
 
 ##To Install
-Clone the github repository https://github.com/brownieboy/react-dragdrop-test-simple  In a terminal, cd to the folder that you just cloned the repository into and run
+Clone the github repository https://github.com/brownieboy/react-dragdrop-test-simple:
+```
+git clone https://github.com/brownieboy/react-dragdrop-test-simple.git
+```
+
+In a terminal, cd to the folder that you just cloned the repository into and run
 ```
 npm install
 ```
@@ -87,18 +92,18 @@ You can build the app with either:
 ```
 npm run build
 ```
-or
+or if you're on Windows
 ```
 npm run buildwin
 ```
 
-The latter minifies and uglifies the resulting JavaScript libraries, which reduced to about a third of their unminified sizes.  However, build time is significantly higher!
+NB: either of the latter two commands will minify and uglify the resulting JavaScript libraries, which reduced to about a third of their unminified sizes.  However, build time is significantly higher!
 
 Open the build/index.html file via a local server.  SublimeServer is good if you're running SubmlimeText.  Otherwise you can run:
 ```
 npm run start
 ```
-to start up webpack-dev-server.  When this is running, your test URL is http://localhost:8080.
+to start up webpack-dev-server.  When this is running, your test URL is http://localhost:8080 
 
 
 ## Demo
