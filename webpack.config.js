@@ -19,7 +19,7 @@ if (TARGET === 'build') {
     module.exports = merge(common, {
         entry: {
             app: path.resolve(ROOT_PATH, 'app/app.jsx'),
-            vendor: ["react", "react-router", "jquery", "jquery-ui"]
+            vendor: ["react", "jquery", "jquery-ui"]
         },
         plugins: [
             new webpack.optimize.CommonsChunkPlugin("vendor", BUILDJSPATH),
@@ -92,7 +92,13 @@ var devServerCommon = {
         progress: true
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery",
+            "window.jQuery": "jquery",
+            "root.jQuery": "jquery"
+        })
     ]
 };
 
