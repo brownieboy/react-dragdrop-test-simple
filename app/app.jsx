@@ -29,7 +29,7 @@ class MainApp extends React.Component {
 					onItemDragStop={this.onSourceListItemDragStop}
 					onItemDragStart={this.onSourceListItemDragStart} />
 			 </div>
-		)
+		);
 	}
 	onSourceListItemDragStart (sortableContextObject, event, ui) {
       this.dragStartIndex = ui.item.index();
