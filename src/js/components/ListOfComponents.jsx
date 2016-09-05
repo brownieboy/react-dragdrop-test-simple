@@ -1,8 +1,8 @@
-import $ from 'jquery';
-import 'jquery-ui/sortable';
+import $ from "jquery";
+import "jquery-ui/sortable";
 
-import React from 'react';
-import ListComponent from './ListComponent.jsx';
+import React from "react";
+import ListComponent from "./ListComponent.jsx";
 
 export default class ComponentsList extends React.Component {
   render() {
@@ -16,21 +16,20 @@ export default class ComponentsList extends React.Component {
       <section className={this.props.sectionClassName}>
         <h2>{this.props.title}</h2>
         <ul id={this.props.id} className="connected-list index-list">
-          {this.props.items.map(function(item, index) {
-              return(<ListComponent key={item.key} title={item.title} />);
+          {this.props.items.map(function(item) {
+              return (<ListComponent key={item.key} title={item.title} />);
           })}
         </ul>
       </section>
-    )
+    );
   }
 
   componentDidMount() {
-    var thisDOMNode = React.findDOMNode(this);
-    this.makeSortable(thisDOMNode);    
+    this.makeSortable();
   }
 
-  makeSortable(thisDOMNode) {
-    if(this.props.sortable) {
+  makeSortable() {
+    if (this.props.sortable) {
       var that = this;
       var connectionString = "#" + this.props.id;
       $(connectionString).sortable({
@@ -52,4 +51,12 @@ export default class ComponentsList extends React.Component {
 
 ComponentsList.defaultProps = {
   items: []
+};
+
+ComponentsList.propTypes = {
+  items: React.PropTypes.array.isRequired,
+  sectionClassName: React.PropTypes.string.isRequired,
+  title: React.PropTypes.string.isRequired,
+  id: React.PropTypes.string.isRequired,
+  sortable: React.PropTypes.bool
 };
