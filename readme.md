@@ -24,7 +24,7 @@ The trick to getting them to work together was to not let jQuery-ui modify the U
 4. When the user drops the line item, we:
   1. Read from jQuery-ui.sortable() the new index position for the line item
   2. Cancel jQuery-ui.sortable() so that the list goes backs to its original position, and the UI is unchanged.
-  3. Pass the old and new indexes of the dragged line item to ReactJS.  ReactJS then reorders the back-end data and calls a setState(), which re-orders the list in the UI. 
+  3. Pass the old and new indexes of the dragged line item to ReactJS.  ReactJS then reorders the back-end data and calls a setState(), which re-orders the list in the UI.
 
 
 ##Advantages & Disadvantages
@@ -93,19 +93,15 @@ To run the demo, it's then:
 ```
 npm run start
 ```
-This starts up webpack-dev-server.  When this is running, your test URL is http://localhost:8080 
+This starts up webpack-dev-server.  When this is running, your test URL is http://localhost:8080/src/index.html
 
 
-If you want to do a static build of the app, you can use either:
+If you want to do a static build of the app, you can use:
 ```
 npm run build
 ```
-or if you're on Windows
-```
-npm run buildwin
-```
 
-NB: either of the latter two commands will minify and uglify the resulting JavaScript libraries, which reduced to about a third of their unminified sizes.  However, build time is significantly higher!  Open the build/index.html file via a local server.  SublimeServer is good if you're running SubmlimeText.
+This will build the JavaScript files to the /build folder.  The build process will minify and uglify the resulting JavaScript libraries, which reduced to about a third of their unminified sizes.  However, build time is significantly longer  Open the build/index.html file via a local server.  SublimeServer is good if you're running SubmlimeText.
 
 
 ## Demo
