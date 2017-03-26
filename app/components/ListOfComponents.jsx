@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDom from "react-dom";
-import $ from 'jquery';
+// import $ from 'jquery';
 // import 'jquery-ui/sortable';
 import "jquery-ui/ui/widgets/sortable.js";
 

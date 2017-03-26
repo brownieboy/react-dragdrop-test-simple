@@ -1,4 +1,4 @@
-import $ from "jquery";
+// import $ from "jquery";
 // import "jquery-ui/sortable";
 import "jquery-ui/ui/widgets/sortable.js";
 import "jquery-ui-touch-punch";
