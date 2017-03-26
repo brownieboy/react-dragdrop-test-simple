@@ -1,3 +1,4 @@
+/* eslint-env jquery */
 import React from "react";
 import ReactDom from "react-dom";
 // import $ from 'jquery';
@@ -5,7 +6,7 @@ import ReactDom from "react-dom";
 import "jquery-ui/ui/widgets/sortable.js";
 
 
-import ListComponent from './ListComponent.jsx';
+import ListComponent from "./ListComponent.jsx";
 
 export default class ComponentsList extends React.Component {
   render() {
@@ -19,24 +20,25 @@ export default class ComponentsList extends React.Component {
       <section className={this.props.sectionClassName}>
         <h2>{this.props.title}</h2>
         <ul id={this.props.id} className="connected-list index-list">
-          {this.props.items.map(function(item, index) {
-              return(<ListComponent key={item.key} title={item.title} />);
-          })}
+          {this.props.items.map(item =>
+              <ListComponent key={item.key} title={item.title} />
+          )}
         </ul>
       </section>
-    )
+    );
   }
 
   componentDidMount() {
-    var thisDOMNode = ReactDom.findDOMNode(this);
+    const thisDOMNode = ReactDom.findDOMNode(this);
 
     this.makeSortable(thisDOMNode);
   }
 
-  makeSortable(thisDOMNode) {
-    if(this.props.sortable) {
-      var that = this;
-      var connectionString = "#" + this.props.id;
+  makeSortable() {
+    if (this.props.sortable) {
+      const that = this;
+      const connectionString = `#${this.props.id}`;
+
       $(connectionString).sortable({
         helper: "clone",
         start: function(event, ui) {
