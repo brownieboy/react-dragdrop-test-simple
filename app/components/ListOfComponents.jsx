@@ -5,8 +5,6 @@ import React from "react";
 // import $ from 'jquery';
 // import 'jquery-ui/sortable';
 import "jquery-ui/ui/widgets/sortable.js";
-
-
 import ListComponent from "./ListComponent.jsx";
 
 export default class ComponentsList extends React.Component {
@@ -49,13 +47,20 @@ export default class ComponentsList extends React.Component {
         <ul id={this.props.id}
           ref="sortable"
           className="connected-list index-list">
-          {this.props.items.map(item =>
-              <ListComponent key={item.key} title={item.title} />
+          { this.props.items.map(item =>
+              <ListComponent key={item.key} title={item.title.toString()} />
           )}
         </ul>
       </section>
     );
   }
+
+  componentWillUnmount() {
+
+    // Clean up the mess when the component unmounts
+    this.$node.sortable("destroy");
+  }
+
 }
 
 ComponentsList.defaultProps = {
@@ -69,4 +74,3 @@ ComponentsList.propTypes = {
   sortable: React.PropTypes.bool.isRequired,
   title: React.PropTypes.string
 };
-
