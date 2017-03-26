@@ -6,4 +6,5 @@ dist
 assets.json
 build/js
 .DS_Store
+*.log
 *.map
