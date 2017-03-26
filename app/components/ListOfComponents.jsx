@@ -1,7 +1,10 @@
+import React from "react";
+import ReactDom from "react-dom";
 import $ from 'jquery';
-import 'jquery-ui/sortable';
+// import 'jquery-ui/sortable';
+import "jquery-ui/ui/widgets/sortable.js";
 
-import React from 'react';
+
 import ListComponent from './ListComponent.jsx';
 
 export default class ComponentsList extends React.Component {
@@ -25,8 +28,9 @@ export default class ComponentsList extends React.Component {
   }
 
   componentDidMount() {
-    var thisDOMNode = React.findDOMNode(this);
-    this.makeSortable(thisDOMNode);    
+    var thisDOMNode = ReactDom.findDOMNode(this);
+
+    this.makeSortable(thisDOMNode);
   }
 
   makeSortable(thisDOMNode) {
