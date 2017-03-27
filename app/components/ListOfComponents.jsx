@@ -5,6 +5,7 @@ import React from "react";
 // import $ from 'jquery';
 // import 'jquery-ui/sortable';
 import "jquery-ui/ui/widgets/sortable.js";
+// import "jquery-ui";
 import ListComponent from "./ListComponent.jsx";
 
 export default class ComponentsList extends React.Component {
