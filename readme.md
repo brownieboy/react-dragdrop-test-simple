@@ -24,9 +24,9 @@ The trick to getting them to work together was to not let jQuery-ui modify the U
 2. Let the user drag and drop those line items to re-order them.
 3. When the user starts dragging, we read the index of the line item (s)he's dragging
 4. When the user drops the line item, we:
-  1. Read from jQuery-ui.sortable() the new index position for the line item
-  2. Cancel jQuery-ui.sortable() so that the list goes backs to its original position, and the UI is unchanged.
-  3. Pass the old and new indexes of the dragged line item to ReactJS.  ReactJS then reorders the back-end data and calls a setState(), which re-orders the list in the UI.
+    1. Read from jQuery-ui.sortable() the new index position for the line item
+    2. Cancel jQuery-ui.sortable() so that the list goes backs to its original position, and the UI is unchanged.
+    3. Pass the old and new indexes of the dragged line item to ReactJS.  ReactJS then reorders the back-end data and calls a setState(), which re-orders the list in the UI.
 
 
 ## Advantages & Disadvantages
