@@ -107,7 +107,7 @@ or if you're on Windows
 npm run buildwin
 ```
 
-NB: either of the latter two commands will minify and uglify the resulting JavaScript libraries, which reduced to about a third of their unminified sizes.  However, build time is significantly higher!  Open the build/index.html file via a local server.  SublimeServer is good if you're running SubmlimeText.
+NB: either of the latter two commands will minify and uglify the resulting JavaScript libraries, which reduced to about a third of their unminified sizes.  However, build time is significantly higher!  Open the build/index.html file via a local server.  SublimeServer is an easy option if you're running SublimeText.
 
 
 ## Demo
